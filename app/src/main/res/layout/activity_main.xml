@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="br.com.renanmassaroto.projects.a3dtest.MainActivity"
+    android:orientation="vertical">
+
+    <br.com.renanmassaroto.projects.a3dtest.SurfaceView
+        android:id="@+id/surface_view"
+        android:layout_width="320dp"
+        android:layout_height="320dp"
+        tools:background="#FF0000"
+        android:layout_centerHorizontal="true"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal">
+
+        <SeekBar
+            android:id="@+id/axis_x_seek_bar"
+            android:layout_width="0dp"
+            android:layout_weight="0.8"
+            android:layout_height="48dp"
+            android:thumbTint="#FF0000"
+            android:progressTint="#FF0000"
+            tools:progress="50"/>
+
+        <TextView
+            android:id="@+id/axis_x_text_view"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            tools:text="0"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal">
+
+        <SeekBar
+            android:id="@+id/axis_y_seek_bar"
+            android:layout_width="0dp"
+            android:layout_weight="0.8"
+            android:layout_height="48dp"
+            android:thumbTint="#00FF00"
+            android:progressTint="#00FF00"
+            tools:progress="50"/>
+
+        <TextView
+            android:id="@+id/axis_y_text_view"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            tools:text="0"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal">
+
+        <SeekBar
+            android:id="@+id/axis_z_seek_bar"
+            android:layout_width="0dp"
+            android:layout_weight="0.8"
+            android:layout_height="48dp"
+            android:thumbTint="#0000FF"
+            android:progressTint="#0000FF"
+            tools:progress="50"/>
+
+        <TextView
+            android:id="@+id/axis_z_text_view"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            tools:text="0"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+</LinearLayout>

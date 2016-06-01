@@ -38,8 +38,8 @@ public class Entity {
             Point3D unfinishedPoint = Matrix.transform(relativeTransformedPoint, camera.rotation, false);
             Point3D finishedPoint = Matrix.transform(relativeTransformedPoint, camera.rotation, true);
 
-            int x = (int) finishedPoint.x + (canvas.canvas.getWidth() / 2);
-            int y = (int) finishedPoint.y + (canvas.canvas.getHeight() / 2);
+            int x = Math.round(finishedPoint.x + (canvas.canvas.getWidth() / 2));
+            int y = Math.round(finishedPoint.y + (canvas.canvas.getHeight() / 2));
 
             double distance = unfinishedPoint.getDistance(camera.position);
             Double pixelDistance = canvas.distances[x][y];
@@ -47,7 +47,7 @@ public class Entity {
             if (pixelDistance == null || distance < pixelDistance) {
                 canvas.distances[x][y] = distance;
 
-                canvas.canvas.drawCircle(finishedPoint.x + (canvas.canvas.getWidth() / 2), finishedPoint.y + (canvas.canvas.getHeight() / 2), 10, paint);
+                canvas.canvas.drawCircle(x, y, 1, paint);
             }
         }
     }

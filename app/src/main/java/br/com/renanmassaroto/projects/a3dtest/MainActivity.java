@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -34,21 +35,72 @@ public class MainActivity extends AppCompatActivity {
         setYAxisControls();
         setZAxisControls();
 
-        mCamera = new Camera(new Point3D(0, 0, 0), new Point3D(0, 0, 0));
+        mCamera = new Camera(new Point3D(0, 0, -1000), new Point3D(0, 0, 0));
         mSurfaceView.camera = mCamera;
 
         mEntities = new ArrayList<>();
         Model model = new Model();
-        model.points = new Point3D[600];
-        for (int i = 0; i < model.points.length; i++) {
-            if (i < 200) {
-                model.points[i] = new Point3D(i - 100, 0, 0, Color.parseColor("#FF0000"));
-            } else if (i < 400) {
-                model.points[i] = new Point3D(0, i - 300, 0, Color.parseColor("#00FF00"));
-            } else {
-                model.points[i] = new Point3D(0, 0, i - 500, Color.parseColor("#0000FF"));
+
+
+        int totalPoints = 50;
+
+        model.points = new Point3D[(totalPoints * totalPoints) * 6];
+
+        int index = 0;
+        for (int row = 0; row < totalPoints; row++) {
+            for (int col = 0; col < totalPoints; col++) {
+                model.points[index] = new Point3D(row - (totalPoints / 2), col - (totalPoints / 2), (totalPoints / 2), Color.RED);
+
+                index++;
             }
         }
+
+        for (int row = 0; row < totalPoints; row++) {
+            for (int col = 0; col < totalPoints; col++) {
+                model.points[index] = new Point3D(row - (totalPoints / 2), col - (totalPoints / 2), -(totalPoints / 2), Color.BLUE);
+
+                index++;
+            }
+        }
+
+        for (int row = 0; row < totalPoints; row++) {
+            for (int col = 0; col < totalPoints; col++) {
+                model.points[index] = new Point3D((totalPoints / 2), row - (totalPoints / 2), col - (totalPoints / 2), Color.YELLOW);
+
+                index++;
+            }
+        }
+
+        for (int row = 0; row < totalPoints; row++) {
+            for (int col = 0; col < totalPoints; col++) {
+                model.points[index] = new Point3D(-(totalPoints / 2), row - (totalPoints / 2), col - (totalPoints / 2), Color.GREEN);
+
+                index++;
+            }
+        }
+
+        for (int row = 0; row < totalPoints; row++) {
+            for (int col = 0; col < totalPoints; col++) {
+                model.points[index] = new Point3D(row - (totalPoints / 2), -(totalPoints / 2), col - (totalPoints / 2), Color.BLACK);
+
+                index++;
+            }
+        }
+
+        for (int row = 0; row < totalPoints; row++) {
+            for (int col = 0; col < totalPoints; col++) {
+                model.points[index] = new Point3D(row - (totalPoints / 2), (totalPoints / 2), col - (totalPoints / 2), Color.CYAN);
+
+                index++;
+            }
+        }
+
+//        for (int row = 0; row < 50; row++) {
+//            for (int col = 0; col < 50; col++) {
+//                model.points[index] = new Point3D(row, col, 25, Color.RED);
+//                index++;
+//            }
+//        }
 
         mEntities.add(new Entity(new Point3D(0, 0, 0), new Point3D(0, 0, 0), model, new Paint()));
 

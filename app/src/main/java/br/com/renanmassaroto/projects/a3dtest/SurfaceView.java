@@ -48,6 +48,8 @@ public class SurfaceView extends View {
         x = (float) Math.toRadians(ROTATION_X);
         y = (float) Math.toRadians(ROTATION_Y);
         z = (float) Math.toRadians(ROTATION_Z);
+
+        mPaint = new Paint();
     }
 
     public SurfaceView(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -56,12 +58,16 @@ public class SurfaceView extends View {
         x = (float) Math.toRadians(ROTATION_X);
         y = (float) Math.toRadians(ROTATION_Y);
         z = (float) Math.toRadians(ROTATION_Z);
+
+        mPaint = new Paint();
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
+        mPaint.setColor(Color.WHITE);
+        canvas.drawRect(0, 0, canvas.getWidth() - 1, canvas.getHeight() - 1, mPaint);
 
 //        mPaint.setColor(Color.RED);
 //        canvas.drawCircle(canvas.getWidth() / 2, canvas.getHeight() / 2, 10, mPaint);

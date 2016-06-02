@@ -13,7 +13,7 @@ import br.com.renanmassaroto.projects.a3dtest.util.Matrix;
  */
 public class Entity {
 
-    public Point3D position, rotation;
+    public Point3D position, rotation, scaling;
     public Model model;
 
     public Paint paint;
@@ -22,9 +22,10 @@ public class Entity {
         super();
     }
 
-    public Entity(Point3D position, Point3D rotation, Model model, Paint paint) {
+    public Entity(Point3D position, Point3D rotation, Point3D scaling, Model model, Paint paint) {
         this.position = position;
         this.rotation = rotation;
+        this.scaling = scaling;
         this.model = model;
         this.paint = paint;
     }
@@ -33,7 +34,9 @@ public class Entity {
         for (Point3D point : model.points) {
             paint.setColor(point.color);
 
-            Point3D relativeTransformedPoint = Matrix.transform(point, this.rotation, false);
+            Point3D scaledPoint = Matrix.applyScalingMatrix(point, scaling);
+
+            Point3D relativeTransformedPoint = Matrix.transform(scaledPoint, this.rotation, false);
 
             Point3D unfinishedPoint = Matrix.transform(relativeTransformedPoint, camera.rotation, false);
             Point3D finishedPoint = Matrix.transform(relativeTransformedPoint, camera.rotation, true);

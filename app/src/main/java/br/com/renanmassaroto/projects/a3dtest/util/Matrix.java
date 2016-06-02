@@ -22,8 +22,7 @@ public class Matrix {
                                     rotation
                             ),
                             rotation
-                    ),
-                    rotation
+                    )
             );
         } else {
             return applyZRotationMatrix(
@@ -81,7 +80,7 @@ public class Matrix {
         return transformedPoint;
     }
 
-    public static Point3D applyProjectionMatrix(Point3D point3D, Point3D rotation) {
+    public static Point3D applyProjectionMatrix(Point3D point3D) {
 //        Log.d(TAG, "applyProjectionMatrix: before " + point3D.toString());
 
         Point3D transformedPoint = new Point3D(
@@ -92,6 +91,17 @@ public class Matrix {
         );
 
 //        Log.d(TAG, "applyProjectionMatrix: after " + transformedPoint.toString());
+
+        return transformedPoint;
+    }
+
+    public static Point3D applyScalingMatrix(Point3D point3D, Point3D scaling) {
+        Point3D transformedPoint = new Point3D(
+                (float) (point3D.x * scaling.x + point3D.y * 0 + point3D.z * 0),
+                (float) (point3D.x * 0 + point3D.y * scaling.y + point3D.z * 0),
+                (float) (point3D.x * 0 + point3D.y * 0 + point3D.z * scaling.z),
+                point3D.color
+        );
 
         return transformedPoint;
     }

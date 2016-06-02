@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         Model model = new Model();
 
 
-        int totalPoints = 50;
+        int totalPoints = 25;
 
         model.points = new Point3D[(totalPoints * totalPoints) * 6];
 
@@ -95,14 +95,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-//        for (int row = 0; row < 50; row++) {
-//            for (int col = 0; col < 50; col++) {
-//                model.points[index] = new Point3D(row, col, 25, Color.RED);
-//                index++;
-//            }
-//        }
-
-        mEntities.add(new Entity(new Point3D(0, 0, 0), new Point3D(0, 0, 0), model, new Paint()));
+        mEntities.add(new Entity(new Point3D(0, 0, 0), new Point3D(0, 0, 0), new Point3D(4, 4, 4), model, new Paint()));
 
         mSurfaceView.entities = new ArrayList<>();
         mSurfaceView.entities.add(mEntities.get(0));

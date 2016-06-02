@@ -15,7 +15,7 @@ public class Camera extends Entity {
     }
 
     public Camera(Point3D position, Point3D rotation) {
-        super(position, rotation, null, new Paint());
+        super(position, rotation, null, null, new Paint());
     }
 
     @Override

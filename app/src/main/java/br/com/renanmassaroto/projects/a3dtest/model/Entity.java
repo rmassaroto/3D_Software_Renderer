@@ -31,27 +31,34 @@ public class Entity {
     }
 
     public void onDraw(CustomCanvas canvas, Camera camera) {
-        for (Point3D point : model.points) {
-            paint.setColor(point.color);
+        try {
+            for (Point3D point : model.points) {
+                paint.setColor(point.color);
 
-            Point3D scaledPoint = Matrix.applyScalingMatrix(point, scaling);
+//                Point3D newPosition = Matrix.applyPerspectiveProjectionMatrix(position, camera);
+//                Point3D transformedPoint = Matrix.applyTranslationMatrix(point, newPosition);
 
-            Point3D relativeTransformedPoint = Matrix.transform(scaledPoint, this.rotation, false);
+                Point3D transformedPoint = Matrix.applyScalingMatrix(point, scaling);
+                transformedPoint = Matrix.transform(transformedPoint, this.rotation, false);
+                transformedPoint = Matrix.applyTranslationMatrix(transformedPoint, position);
 
-            Point3D unfinishedPoint = Matrix.transform(relativeTransformedPoint, camera.rotation, false);
-            Point3D finishedPoint = Matrix.transform(relativeTransformedPoint, camera.rotation, true);
+                double distance = transformedPoint.getDistance(camera.position);
 
-            int x = Math.round(finishedPoint.x + (canvas.canvas.getWidth() / 2));
-            int y = Math.round(finishedPoint.y + (canvas.canvas.getHeight() / 2));
+                transformedPoint = Matrix.applyProjectionMatrix(transformedPoint);
 
-            double distance = unfinishedPoint.getDistance(camera.position);
-            Double pixelDistance = canvas.distances[x][y];
+                int x = Math.round(transformedPoint.x + (canvas.canvas.getWidth() / 2));
+                int y = Math.round(transformedPoint.y + (canvas.canvas.getHeight() / 2));
 
-            if (pixelDistance == null || distance < pixelDistance) {
-                canvas.distances[x][y] = distance;
+                Double pixelDistance = canvas.distances[x][y];
 
-                canvas.canvas.drawCircle(x, y, 1, paint);
+                if (pixelDistance == null || distance < pixelDistance) {
+                    canvas.distances[x][y] = distance;
+
+                    canvas.canvas.drawCircle(x, y, 1, paint);
+                }
             }
+        } catch (ArrayIndexOutOfBoundsException e) {
+
         }
     }
 }

@@ -4,7 +4,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -19,8 +19,11 @@ public class MainActivity extends AppCompatActivity {
 
     private SurfaceView mSurfaceView;
 
-    private SeekBar mXAxisSeekBar, mYAxisSeekBar, mZAxisSeekBar;
-    private TextView mXAxisTextView, mYAxisTextView, mZAxisTextView;
+    private SeekBar mObjectXAxisSeekBar, mObjectYAxisSeekBar, mObjectZAxisSeekBar,
+            mCameraXAxisSeekBar, mCameraYAxisSeekBar, mCameraZAxisSeekBar;
+    private TextView mObjectXAxisTextView, mObjectYAxisTextView, mObjectZAxisTextView,
+            mCameraXAxisTextView, mCameraYAxisTextView, mCameraZAxisTextView, mScalingTextView;
+    private Button mMinusScalingButton, mPlusScalingButton;
 
     private Camera mCamera;
     public ArrayList<Entity> mEntities;
@@ -35,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setYAxisControls();
         setZAxisControls();
 
-        mCamera = new Camera(new Point3D(0, 0, -1000), new Point3D(0, 0, 0));
+        mCamera = new Camera(new Point3D(0, 0, -500), new Point3D(0, 0, 0));
         mSurfaceView.camera = mCamera;
 
         mEntities = new ArrayList<>();
@@ -102,17 +105,42 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setXAxisControls() {
-        mXAxisSeekBar = (SeekBar) findViewById(R.id.axis_x_seek_bar);
-        mXAxisTextView = (TextView) findViewById(R.id.axis_x_text_view);
+        mObjectXAxisSeekBar = (SeekBar) findViewById(R.id.object_axis_x_seek_bar);
+        mObjectXAxisTextView = (TextView) findViewById(R.id.object_axis_x_text_view);
 
-        mXAxisSeekBar.setProgress(0);
-        mXAxisSeekBar.setMax(360);
-        mXAxisTextView.setText("0");
-        mXAxisSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        mObjectXAxisSeekBar.setProgress(0);
+        mObjectXAxisSeekBar.setMax(360);
+        mObjectXAxisTextView.setText("0");
+        mObjectXAxisSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                mEntities.get(0).rotation.x = (float) Math.toRadians(progress);
+                mObjectXAxisTextView.setText(Integer.toString(progress));
+                mSurfaceView.invalidate();
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        mCameraXAxisSeekBar = (SeekBar) findViewById(R.id.camera_axis_x_seek_bar);
+        mCameraXAxisTextView = (TextView) findViewById(R.id.camera_axis_x_text_view);
+
+        mCameraXAxisSeekBar.setProgress(0);
+        mCameraXAxisSeekBar.setMax(360);
+        mCameraXAxisTextView.setText("0");
+        mCameraXAxisSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 mCamera.rotation.x = (float) Math.toRadians(progress);
-                mXAxisTextView.setText(Integer.toString(progress));
+                mCameraXAxisTextView.setText(Integer.toString(progress));
                 mSurfaceView.invalidate();
             }
 
@@ -129,17 +157,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setYAxisControls() {
-        mYAxisSeekBar = (SeekBar) findViewById(R.id.axis_y_seek_bar);
-        mYAxisTextView = (TextView) findViewById(R.id.axis_y_text_view);
+        mObjectYAxisSeekBar = (SeekBar) findViewById(R.id.object_axis_y_seek_bar);
+        mObjectYAxisTextView = (TextView) findViewById(R.id.object_axis_y_text_view);
 
-        mYAxisSeekBar.setProgress(0);
-        mYAxisSeekBar.setMax(360);
-        mYAxisTextView.setText("0");
-        mYAxisSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        mObjectYAxisSeekBar.setProgress(0);
+        mObjectYAxisSeekBar.setMax(360);
+        mObjectYAxisTextView.setText("0");
+        mObjectYAxisSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                mCamera.rotation.y = (float) Math.toRadians(progress);
-                mYAxisTextView.setText(Integer.toString(progress));
+                mEntities.get(0).rotation.y = (float) Math.toRadians(progress);
+                mObjectYAxisTextView.setText(Integer.toString(progress));
                 mSurfaceView.invalidate();
             }
 
@@ -156,17 +184,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setZAxisControls() {
-        mZAxisSeekBar = (SeekBar) findViewById(R.id.axis_z_seek_bar);
-        mZAxisTextView = (TextView) findViewById(R.id.axis_z_text_view);
+        mObjectZAxisSeekBar = (SeekBar) findViewById(R.id.object_axis_z_seek_bar);
+        mObjectZAxisTextView = (TextView) findViewById(R.id.object_axis_z_text_view);
 
-        mZAxisSeekBar.setProgress(0);
-        mZAxisSeekBar.setMax(360);
-        mZAxisTextView.setText("0");
-        mZAxisSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        mObjectZAxisSeekBar.setProgress(0);
+        mObjectZAxisSeekBar.setMax(360);
+        mObjectZAxisTextView.setText("0");
+        mObjectZAxisSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                mCamera.rotation.z = (float) Math.toRadians(progress);
-                mZAxisTextView.setText(Integer.toString(progress));
+                mEntities.get(0).rotation.z = (float) Math.toRadians(progress);
+                mObjectZAxisTextView.setText(Integer.toString(progress));
                 mSurfaceView.invalidate();
             }
 

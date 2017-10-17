@@ -1,11 +1,14 @@
-package br.com.renanmassaroto.projects.a3dtest.model;
+package br.com.renanmassaroto.projects.a3dtest.common.model;
 
 import android.graphics.Color;
+import android.util.Log;
 
 /**
- * Created by renan on 29/05/2016.
+ * Created by Renan Cardoso Massaroto on 29/05/2016.
  */
 public class Point3D {
+
+    private static final String TAG = "Point3D";
 
     public float x, y, z;
     public int color;
@@ -34,7 +37,10 @@ public class Point3D {
     }
 
     public double getDistance(Point3D point3D) {
-//        return Math.sqrt(x * point3D.x + y * point3D.y + z * point3D.z);
-        return Math.sqrt(Math.pow(point3D.x - x, 2) + Math.pow(point3D.y - y, 2) + Math.pow(point3D.z - z, 2));
+        Log.d(TAG, "Distance betwen this point [" + toString() + "] and point [" + point3D.toString() + "]");
+
+        return Math.sqrt(
+                Math.pow(x - point3D.x, 2) + Math.pow(y - point3D.y, 2) + Math.pow(z - point3D.z, 2)
+        );
     }
 }

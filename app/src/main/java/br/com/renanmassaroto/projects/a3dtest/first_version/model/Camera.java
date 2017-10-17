@@ -1,12 +1,12 @@
-package br.com.renanmassaroto.projects.a3dtest.model;
+package br.com.renanmassaroto.projects.a3dtest.first_version.model;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
-import br.com.renanmassaroto.projects.a3dtest.CustomCanvas;
+import br.com.renanmassaroto.projects.a3dtest.first_version.CustomCanvas;
 
 /**
- * Created by Appfactory on 31/05/16.
+ * Created by Renan Cardoso Massaroto on 31/05/16.
  */
 public class Camera extends Entity {
 

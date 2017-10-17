@@ -1,4 +1,4 @@
-package br.com.renanmassaroto.projects.a3dtest;
+package br.com.renanmassaroto.projects.a3dtest.first_version;
 
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -10,10 +10,11 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import br.com.renanmassaroto.projects.a3dtest.model.Camera;
-import br.com.renanmassaroto.projects.a3dtest.model.Entity;
-import br.com.renanmassaroto.projects.a3dtest.model.Model;
-import br.com.renanmassaroto.projects.a3dtest.model.Point3D;
+import br.com.renanmassaroto.projects.a3dtest.R;
+import br.com.renanmassaroto.projects.a3dtest.first_version.model.Camera;
+import br.com.renanmassaroto.projects.a3dtest.first_version.model.Entity;
+import br.com.renanmassaroto.projects.a3dtest.first_version.model.Model;
+import br.com.renanmassaroto.projects.a3dtest.first_version.model.Point3D;
 
 public class MainActivity extends AppCompatActivity {
 

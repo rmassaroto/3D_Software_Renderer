@@ -1,21 +1,20 @@
-package br.com.renanmassaroto.projects.a3dtest;
+package br.com.renanmassaroto.projects.a3dtest.first_version;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
 
-import br.com.renanmassaroto.projects.a3dtest.model.Camera;
-import br.com.renanmassaroto.projects.a3dtest.model.Entity;
-import br.com.renanmassaroto.projects.a3dtest.model.Point3D;
+import br.com.renanmassaroto.projects.a3dtest.first_version.model.Camera;
+import br.com.renanmassaroto.projects.a3dtest.first_version.model.Entity;
+
 
 /**
- * Created by renan on 29/05/2016.
+ * Created by Renan Cardoso Massaroto on 29/05/2016.
  */
 public class SurfaceView extends View {
 

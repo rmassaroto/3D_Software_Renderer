@@ -1,9 +1,7 @@
-package br.com.renanmassaroto.projects.a3dtest;
+package br.com.renanmassaroto.projects.a3dtest.first_version;
 
 import android.graphics.Canvas;
 import android.util.Log;
-
-import br.com.renanmassaroto.projects.a3dtest.model.Point3D;
 
 /**
  * Created by Appfactory on 31/05/16.

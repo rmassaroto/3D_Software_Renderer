@@ -1,12 +1,11 @@
-package br.com.renanmassaroto.projects.a3dtest.util;
+package br.com.renanmassaroto.projects.a3dtest.first_version.util;
 
-import android.util.Log;
 
-import br.com.renanmassaroto.projects.a3dtest.model.Camera;
-import br.com.renanmassaroto.projects.a3dtest.model.Point3D;
+import br.com.renanmassaroto.projects.a3dtest.first_version.model.Camera;
+import br.com.renanmassaroto.projects.a3dtest.first_version.model.Point3D;
 
 /**
- * Created by Appfactory on 31/05/16.
+ * Created by Renan Cardoso Massaroto on 31/05/16.
  */
 public class Matrix {
 

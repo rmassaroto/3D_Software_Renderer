@@ -2,6 +2,9 @@ package br.com.renanmassaroto.projects.a3dtest;
 
 import org.junit.Test;
 
+import br.com.renanmassaroto.projects.a3dtest.common.model.Point3D;
+import br.com.renanmassaroto.projects.a3dtest.common.model.Vertex;
+
 import static org.junit.Assert.*;
 
 /**
@@ -9,7 +12,14 @@ import static org.junit.Assert.*;
  */
 public class ExampleUnitTest {
     @Test
-    public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
+    public void calculatePoints_isCorrect() throws Exception {
+        Vertex vertex = new Vertex(
+                new Point3D(0, 0, 0),
+                new Point3D(1, 0, 0)
+        );
+
+        vertex.calculatePoints();
+
+        assertEquals(2, vertex.points.length);
     }
 }
